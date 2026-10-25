@@ -25,3 +25,26 @@ save-slot figcaption{color:var(--ink)!important;font-size:12px!important;padding
 save-slot button[data-delete]{width:30px!important;height:30px!important;padding:6px!important;margin:0!important;top:5px!important;right:5px!important;border-radius:50%!important}
 save-slot button[data-delete] svg{width:12px!important;height:12px!important}save-slot{cursor:pointer}save-slot:focus-visible{outline:3px solid var(--gold);outline-offset:4px}
 @media(max-width:700px){.hero-copy h1{font-size:clamp(26px,7.8vw,44px);letter-spacing:.04em}.game-header .chapter-heading{flex:1}.game-header .chapter-heading>span{max-width:65vw}.game-header .game-tools{flex-shrink:0}}
+/* Let illustrated chapter buttons size to their contents, rather than the
+   engine's fixed button height, so rows and the following verse cannot overlap. */
+main-screen .chapter-grid{align-items:start;grid-auto-rows:auto;row-gap:28px}
+main-screen .chapter-card{height:auto!important;min-height:0;max-height:none;white-space:normal;line-height:1.7;padding:0;text-align:left}
+main-screen .chapter-thumb{width:100%;height:auto;aspect-ratio:16/9;margin-bottom:12px}
+main-screen .chapter-thumb img{display:block}
+main-screen .chapter-card strong{padding-right:18px;overflow-wrap:anywhere}
+main-screen .verse{margin-top:16px}
+main-screen .verse>div{min-width:0}
+@media(max-width:1000px){
+ main-screen .chapter-grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:28px 18px}
+ main-screen .chapter-card strong{font-size:13px}
+}
+@media(max-width:600px){
+ main-screen .chapter-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:26px 16px}
+ main-screen .section-heading{margin-bottom:24px}
+ main-screen .section-heading h2{line-height:1.7}
+ main-screen .chapter-section{padding-bottom:34px}
+ main-screen .chapter-card .number{margin-bottom:6px}
+}
+@media(max-width:360px){
+ main-screen .chapter-grid{grid-template-columns:minmax(0,1fr);gap:25px}
+}
