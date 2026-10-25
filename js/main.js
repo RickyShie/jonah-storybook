@@ -1,14 +1,14 @@
 'use strict';
 (() => {
  const engine = monogatari;
- let ready = false, saveTimer, toastTimer, saveQueue = Promise.resolve();
+ let ready = false, starting = false, toastTimer;
  const chapters = window.JONAH_CHAPTERS;
  const dialog = () => document.getElementById('book-dialog');
  const safeLocal = {
   get(key,fallback=null) {try {return JSON.parse(localStorage.getItem('jonah-book:'+key)) ?? fallback;} catch {return fallback;}},
-  set(key,value) {try {localStorage.setItem('jonah-book:'+key,JSON.stringify(value));} catch {/* Game saves report failures separately. */}}
+  set(key,value) {try {localStorage.setItem('jonah-book:'+key,JSON.stringify(value));} catch {/* Reading preferences are optional. */}}
  };
- const visited = new Set(safeLocal.get('visited',[]));
+ const visited = new Set();
  function toast(text) {
   const el=document.querySelector('.toast'); el.textContent=text; el.hidden=false;
   clearTimeout(toastTimer); toastTimer=setTimeout(()=>{el.hidden=true;},3200);
@@ -41,42 +41,23 @@
   const next=document.querySelector('[data-action="next-dialog"]');
   next.disabled=choices;
   next.setAttribute('aria-label',choices?'答えをえらんでください':'つぎの文章へ');
-  if(ch&&!visited.has(ch)) {visited.add(ch);safeLocal.set('visited',[...visited]);paintCards();}
- }
- async function saveBookmark(manual=false) {
-  if(!engine.global('playing'))return;
-  saveQueue=saveQueue.catch(()=>{}).then(async()=>{
-   // Separate fixed slots keep the explicit bookmark and automatic resume independent.
-   await engine.saveTo(manual?'SaveLabel':'AutoSaveLabel',1,manual?'自分のしおり':'つづきから');
-   document.getElementById('resume').hidden=false;
-  });
-  try {await saveQueue;if(manual)toast('しおりをはさみました。ここから、また読めます。');}
-  catch(err){console.error('Bookmark could not be saved',err);if(manual)toast('しおりを保存できませんでした。ブラウザの保存設定を確認してください。');}
+  if(ch&&!visited.has(ch)) {visited.add(ch);paintCards();}
  }
  async function startAt(label) {
-  if(!ready)return;
-  clearTimeout(saveTimer);
-  if(dialog().open)dialog().close();
-  await saveQueue.catch(()=>{});
-  await engine.resetGame();
-  engine.state({label,step:0});
-  await engine.runListener('start');
- }
- async function resume() {
-  if(!ready)return;
+  if(!ready || starting)return;
+  starting=true;
   try {
-   const exists=await engine.Storage.get('JonahAuto_1').catch(()=>null);
-   if(!exists?.game){toast('まだ、つづきのしおりはありません。');return;}
    if(dialog().open)dialog().close();
-   await engine.loadFromSlot('JonahAuto_1');
-   await engine.run(engine.label()[engine.state('step')]);
-   updateHUD();
-  } catch(err){console.error(err);toast('しおりを開けませんでした。表紙の絵から、お話をえらべます。');}
+   engine.autoPlay(false);
+   await engine.resetGame();
+   engine.state({label,step:0});
+   await engine.runListener('start');
+  } finally { starting=false; }
  }
  function helpDialog() {
   openDialog('自分のペースで読もう',`
    <p>「つぎへ」、スペースキー、右矢印で進みます。絵や文章を押しても進めます。「もどる」または左矢印で前へ。答えをえらぶときは、ボタンを押してください。</p>
-   <p>「しおりをはさむ」で、今の場所を残せます。自動保存のつづきは、表紙から開けます。</p>
+   <p>ほかのお話を読みたいときは「表紙」にもどり、6枚の絵からえらんでください。えらんだお話のはじめから、すぐに読めます。</p>
    <label class="setting-row">文字の大きさ<select id="font-size" aria-label="文字の大きさ"><option value="normal">ふつう</option><option value="large">大きく</option></select></label>
    <label class="setting-row">文字の出かた<select id="type-mode" aria-label="文字の出かた"><option value="flow">ゆっくり</option><option value="instant">まとめて</option></select></label>
    <p>声に出して読んだり、おうちの人や先生といっしょに考えたりしてね。</p>
@@ -86,32 +67,17 @@
   font.onchange=()=>{safeLocal.set('font',font.value);applyPreferences();};
   type.onchange=()=>{safeLocal.set('type',type.value);applyPreferences();};
  }
- function decorateSaves() {
-  document.querySelectorAll('load-screen button.top').forEach(el=>el.setAttribute('aria-label','お話にもどる'));
-  document.querySelectorAll('save-slot').forEach(el=>{
-   el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','このしおりから読む：'+(el.getAttribute('name')||'しおり'));
-  });
-  document.querySelectorAll('save-slot button[data-delete]').forEach(el=>el.setAttribute('aria-label','このしおりを消す'));
- }
  function applyPreferences() {
   document.documentElement.style.setProperty('--dialog-size',safeLocal.get('font')==='large'?'27px':'');
   engine.setting('TypeAnimation',safeLocal.get('type','flow')!=='instant'&&!matchMedia('(prefers-reduced-motion: reduce)').matches);
  }
- function confirmRestart(label) {
-  if(engine.global('playing')) {
-   openDialog('ここから読む？','<p>今の場所は自動のしおりに残して、えらんだお話のはじめから読みます。</p><button class="primary" data-action="confirm-chapter" data-label="'+label+'">ここから読む →</button>','お話をえらぶ');
-  } else startAt(label);
- }
  engine.registerListener('noop',{callback:()=>true});
- engine.registerListener('begin',{callback:()=>confirmRestart('Start')});
- engine.registerListener('confirm-chapter',{callback:async(_e,el)=>{await saveBookmark();await startAt(el.data('label'));}});
- engine.registerListener('read-chapter',{callback:(_e,el)=>confirmRestart('Chapter'+el.data('chapter'))});
- engine.registerListener('resume',{callback:resume});
+ engine.registerListener('begin',{callback:()=>startAt('Start')});
+ engine.registerListener('read-chapter',{callback:(_e,el)=>startAt('Chapter'+el.data('chapter'))});
  engine.registerListener('game-help',{callback:helpDialog});
- engine.registerListener('home',{callback:async()=>{clearTimeout(saveTimer);await saveBookmark();engine.autoPlay(false);await engine.showScreen('main');paintCards();}});
- engine.registerListener('quick-save',{callback:()=>saveBookmark(true)});
+ engine.registerListener('home',{callback:async()=>{engine.autoPlay(false);await engine.showScreen('main');paintCards();}});
  engine.registerListener('next-dialog',{callback:async()=>{try{await engine.proceed({userInitiated:true});}catch{/* Choices deliberately block advancing. */}}});
- window.JonahBook={complete(){safeLocal.set('finished',true);toast('ヨナの旅を、最後まで読みました。');}};
+ window.JonahBook={complete(){toast('ヨナの旅を、最後まで読みました。');}};
  Monogatari.$_ready(async()=>{
   paintCards();
   document.getElementById('close-dialog').onclick=()=>dialog().close();
@@ -126,19 +92,15 @@
   await engine.init('#monogatari');
   ready=true;applyPreferences();
   document.querySelector('[data-action="begin"]').disabled=false;
-  const auto=await engine.Storage.get('JonahAuto_1').catch(()=>null);
-  document.getElementById('resume').hidden=!auto?.game;
   engine.on('didUpdateState',()=>updateHUD());
-  engine.on('didRunAction',()=>{
-   updateHUD();clearTimeout(saveTimer);
-   if(engine.global('playing'))saveTimer=setTimeout(()=>saveBookmark(),400);
-  });
-  engine.on('didLoadGame',()=>updateHUD());
+  engine.on('didRunAction',()=>updateHUD());
   new MutationObserver(()=>updateHUD()).observe(document.querySelector('game-screen'),{childList:true});
-  new MutationObserver(decorateSaves).observe(document.querySelector('load-screen'),{childList:true,subtree:true});
-  document.querySelector('load-screen').addEventListener('keydown',e=>{
-   if(e.target.matches('save-slot')&&['Enter',' '].includes(e.key)){e.preventDefault();e.target.click();}
+  // Disable the engine's save/load shortcuts; Escape opens reading help instead.
+  engine.keyboardShortcut(['shift+s','shift+l'],()=>{});
+  engine.keyboardShortcut('esc',()=>{
+   if(dialog().open)dialog().close();
+   else if(engine.global('playing'))helpDialog();
   });
-  decorateSaves();updateHUD();
+  updateHUD();
  });
 })();
