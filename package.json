@@ -1,0 +1,1 @@
+{"name":"jonah-bible-storybook","version":"1.0.0","private":true,"description":"A Japanese Jonah lesson visual novel powered by Monogatari 2.8.0","type":"module","scripts":{"start":"node server.mjs","test":"node tests/story.test.mjs"},"engines":{"node":">=18"}}
