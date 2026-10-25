@@ -35,5 +35,4 @@ for(const answer of [0,1]){
  assert.ok(visited.includes('Finish'),'Every answer route must reach the same lesson ending');
  for(let i=1;i<=6;i++)assert.ok(visited.includes(`Chapter${i}`));
 }
-assert.ok(context.window.JONAH_PRAYER.startsWith('主イエス様のお名前によってお祈りします。'));
-console.log(`PASS: ${Object.keys(story).length} labels, all links and six local scenes, both answer routes reach the complete lesson, prayer preserved.`);
+console.log(`PASS: ${Object.keys(story).length} labels, all links and six local scenes, both answer routes reach the complete lesson.`);

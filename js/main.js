@@ -35,7 +35,7 @@
  function updateHUD() {
   const ch=currentChapter(), entry=chapters[ch-1];
   document.getElementById('chapter-count').textContent=ch?`第 ${ch} 話 ／ 全 6 話`:'ヨナ書 ／ 幼年班 第五課';
-  document.getElementById('chapter-heading').textContent=entry?entry.heading:'はじめに ・ 聖句とお祈り';
+  document.getElementById('chapter-heading').textContent=entry?entry.heading:'はじめに ・ 聖句';
   document.getElementById('chapter-progress').style.width=(ch/6*100)+'%';
   const choices=!!document.querySelector('choice-container');
   const next=document.querySelector('[data-action="next-dialog"]');
@@ -80,7 +80,7 @@
   openDialog('先生・保護者の方へ',`
    <p>第五課「逃げた預言者」の改訂PDFをもとにした、6〜9歳向けの読み聞かせ教材です。目安は10〜15分。問いかけのところで、子どもの言葉をゆっくり聞いてください。</p>
    <h3>この課で学ぶこと</h3><ol><li>ヨナが神様の命令から逃げたために、神様の罰を受けたことを知る。</li><li>神様が正しいとされることを行う。</li><li>友だちのまちがいをゆるす。</li></ol>
-   <h3>聖句と祈り</h3><p>「あなたの敵を愛しなさい」（マタイ5:44）。冒頭では、主イエス様のお名前による原教材の祈りを読みます。</p>
+   <h3>聖句</h3><p>「しかし、わたしはあなたがたに言う。敵を愛し、迫害する者のために祈れ。」（マタイ5:44、口語訳）。冒頭で、この課の聖句を読みます。</p>
    <h3>読み進め方</h3><p>文章や絵をクリックするか、「つぎへ」、スペースキー、右矢印キーで進みます。文字が流れている間は、1回押すと全文を表示します。「もどる」または左矢印で前へ。答えを選ぶ画面では、選んでから進みます。</p>
    <p>「しおりをはさむ」は手動保存です。自動保存もあり、表紙の「つづきから読む」で再開できます。保存は、このブラウザ・このアドレスで行われます。</p>
    <h3>教材と聖書本文の区別</h3><div class="teacher-note">選択肢は理解とふり返りのためのものです。聖書の出来事や結末を変える分岐はありません。得点や失敗の罰もありません。絵の切り抜き表現や光、服装などは挿絵上の表現です。聖書は魚の種類や内部の様子を特定していません。</div>
@@ -126,7 +126,6 @@
  engine.registerListener('chapters',{callback:chaptersDialog});
  engine.registerListener('teacher',{callback:teacherDialog});
  engine.registerListener('game-help',{callback:helpDialog});
- engine.registerListener('prayer',{callback:()=>openDialog('お祈り',`<p>${window.JONAH_PRAYER}</p>`,'心を静かにして')});
  engine.registerListener('home',{callback:async()=>{clearTimeout(saveTimer);await saveBookmark();engine.autoPlay(false);await engine.showScreen('main');paintCards();}});
  engine.registerListener('quick-save',{callback:()=>saveBookmark(true)});
  engine.registerListener('next-dialog',{callback:async()=>{try{await engine.proceed({userInitiated:true});}catch{/* Choices deliberately block advancing. */}}});

@@ -2,13 +2,10 @@
 /* Source: jonah_lesson_modern_japanese.pdf. Questions never change the biblical events. */
 const ruby = (word, reading) => `<ruby>${word}<rt>${reading}</rt></ruby>`;
 const GOD = ruby('神様','かみさま');
-const STORY_PRAYER = `主イエス様のお名前によってお祈りします。主イエス様、私たちを愛し、安心して楽しく過ごせるようにしてくださり、ありがとうございます。これから心を静かにして、お話をよく聞き、あなたの教えを学びます。あなたの教えに従う子どもになれるよう、助けてください。主イエス様に感謝します。アーメン。`;
-window.JONAH_PRAYER = STORY_PRAYER;
 monogatari.assets('scenes', Object.fromEntries([1,2,3,4,5,6].map(i => [`scene${i}`, `scene-${i}.webp`])));
 monogatari.characters({
  n:{name:'おはなし',color:'#315958'},
  q:{name:'いっしょに考えよう',color:'#9b5b31'},
- p:{name:'お祈り',color:'#315958'},
  v:{name:'今日の聖句',color:'#9b5b31'}
 });
 const script = {};
@@ -26,11 +23,7 @@ script.Start = [
  'n これは、ヨナという人のお話です。<br>絵を見ながら、いっしょに読んでみましょう。',
  'n ヨナは、'+GOD+'の言葉を人々に伝える人でした。<br>そのような人を「'+ruby('預言者','よげんしゃ')+'」といいます。',
  'q みんなで「ヨナ」と、2回言ってみましょう。<br>つぎは「ヨナ預言者」と、2回言ってみましょう。',
- 'v 「あなたの'+ruby('敵','てき')+'を愛しなさい」<br><small>マタイによる福音書 5章44節</small>',
- 'n お話を読む前に、心を静かにして、お祈りしましょう。',
- 'p 主イエス様のお名前によってお祈りします。<br>主イエス様、私たちを愛し、安心して楽しく過ごせるようにしてくださり、ありがとうございます。',
- 'p これから心を静かにして、お話をよく聞き、あなたの教えを学びます。<br>あなたの教えに従う子どもになれるよう、助けてください。',
- 'p 主イエス様に感謝します。アーメン。',
+ 'v 「しかし、わたしはあなたがたに言う。'+ruby('敵','てき')+'を愛し、'+ruby('迫害','はくがい')+'する者のために祈れ。」<br><small>マタイによる福音書 5章44節（口語訳）</small>',
  'jump Chapter1'
 ];
 script.Chapter1 = [
@@ -136,7 +129,7 @@ script.Chapter6After = [
  'jump Reflection'
 ];
 script.Reflection = [
- 'v 「あなたの敵を愛しなさい」<br><small>マタイによる福音書 5章44節</small>',
+ 'v 「しかし、わたしはあなたがたに言う。'+ruby('敵','てき')+'を愛し、'+ruby('迫害','はくがい')+'する者のために祈れ。」<br><small>マタイによる福音書 5章44節（口語訳）</small>',
  'q 友だちが、まちがいを認めてあやまってきたら、<br>みんなは、どうしたいですか？',
  {Choice:{Dialog:'q 自分の心をふり返って、えらんでみましょう。',
   Kind:{Text:'ゆるして、仲よくしたい。',Do:'jump Kind'},
