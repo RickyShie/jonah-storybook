@@ -12,7 +12,33 @@ Node.js 18以降が必要です。追加パッケージのインストールは�
 - 終了するときは、起動したターミナルで Ctrl+C を押します。
 
 `index.html` の直接ダブルクリックではなく、上記の方法で開いてください。
-ゲーム本体、画像、スタイルはすべて同梱。起動後のプレイに外部CDNやインターネット接続は必要ありません。
+ゲーム本体、画像、スタイルはすべて同梱。外部CDNは使いません。ローカル起動ではインターネット接続は不要です。
+
+## GitHub Pagesで公開
+
+1. このプロジェクトをGitHubリポジトリにプッシュします。`engine/`、`assets/scenes/`、`assets/favicon.svg`、教材PDFもコミットしてください。
+2. リポジトリの **Settings → Pages → Build and deployment → Source** を **GitHub Actions** にします。
+3. 既にプッシュ済みの場合は、**Actions → Check and deploy GitHub Pages → Run workflow** を既定ブランチで実行します。それ以降は既定ブランチへのプッシュで自動更新されます。
+4. ワークフローが成功したら、**Settings → Pages** またはワークフローの `github-pages` 環境に表示されるURLを開きます。
+
+GitHub上にNode.jsサーバーを常駐させる必要はありません。GitHub Actionsが `npm test` と `npm run build` を実行し、`dist/` の静的ファイルを公開します。プルリクエストや既定以外のブランチでは検証だけを行います。
+
+URLは通常 `https://<ユーザー名>.github.io/<リポジトリ名>/` です。画像・スクリプト・PDFへの参照はすべて相対パスのため、リポジトリ名の変更や独自ドメインにも対応します。`<base href="/">` や `/assets/...` のようなサイトルートを前提とするパスは追加しないでください。
+
+ビルドにはゲームの実行ファイル、WebP画像、アイコン、エンジンのライセンス、ゲーム内から開く教材PDFを含めます。元のPNG、開発サーバー、テスト、設定ファイルは含めません。生成先の `dist/` はGit管理対象外です。
+
+### 公開用ファイルをローカルで確認
+
+```sh
+npm run build
+npm run preview
+```
+
+http://localhost:4173 を開きます。`npm start` は従来どおり編集元のゲームを表示します。プレビューを終えるときは Ctrl+C を押してください。
+
+ローカルと公開サイトは別のアドレスなので、ローカルのしおりは公開サイトには引き継がれません。初回アクセスには通信が必要です。サービスワーカーによるオフライン保存は行いません。
+
+公式手順：[GitHub Pagesのカスタムワークフロー](https://docs.github.com/en/pages/getting-started-with-github-pages/using-custom-workflows-with-github-pages)。
 
 ## 内容と操作
 
@@ -34,10 +60,12 @@ Node.js 18以降が必要です。追加パッケージのインストールは�
 - `js/options.js`：Monogatari設定。
 - `style/main.css`：画面デザインと端末幅への対応。
 - `assets/scenes/`：元のPNGから作った軽量WebP。元PNGは変更していません。
+- `scripts/build.mjs`：GitHub Pages用の静的ファイルを `dist/` に出力。
+- `.github/workflows/pages.yml`：検証とGitHub Pagesへの自動デプロイ。
 - `engine/`：公式リリースのMonogatari実行ファイルとMITライセンス。
 - `jonah_lesson_modern_japanese.pdf`：参照した教材。そのまま保存しています。
 
-`npm test` で物語のリンク、画像、両方の回答経路が同じ結末に達することを検証できます。
+`npm test` で物語のリンク、画像、両方の回答経路が同じ結末に達すること、および公開用ファイルがサイト直下・リポジトリ配下の両方で解決できることを検証できます。
 
 ## 教師向け
 

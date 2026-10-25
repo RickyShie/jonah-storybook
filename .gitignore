@@ -23,3 +23,7 @@ yarn-error.log*
 *.swo
 *~
 .idea/
+
+# Generated GitHub Pages build
+/dist/
+/.pages-build-*/

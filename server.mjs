@@ -3,7 +3,12 @@ import fs from 'node:fs';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 import {execFile} from 'node:child_process';
-const root=path.dirname(fileURLToPath(import.meta.url));
+const projectRoot=path.dirname(fileURLToPath(import.meta.url));
+const root=process.argv.includes('--dist')?path.join(projectRoot,'dist'):projectRoot;
+if(!fs.existsSync(path.join(root,'index.html'))){
+ console.error('Website files are missing. Run npm run build before npm run preview.');
+ process.exit(1);
+}
 const port=Number(process.env.PORT||4173);
 const mime={'.html':'text/html; charset=utf-8','.js':'text/javascript; charset=utf-8','.css':'text/css; charset=utf-8','.webp':'image/webp','.png':'image/png','.svg':'image/svg+xml','.pdf':'application/pdf','.json':'application/json; charset=utf-8'};
 const server=http.createServer((req,res)=>{
