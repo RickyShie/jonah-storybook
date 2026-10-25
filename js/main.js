@@ -71,23 +71,7 @@
    await engine.loadFromSlot('JonahAuto_1');
    await engine.run(engine.label()[engine.state('step')]);
    updateHUD();
-  } catch(err){console.error(err);toast('しおりを開けませんでした。もくじから、お話をえらべます。');}
- }
- function chaptersDialog() {
-  openDialog('どのお話を読む？','<p>はじめからでも、好きなところからでも。</p><div class="chapter-grid">'+chapters.map(chapterCard).join('')+'</div>','もくじ ／ 全6話');
- }
- function teacherDialog() {
-  openDialog('先生・保護者の方へ',`
-   <p>第五課「逃げた預言者」の改訂PDFをもとにした、6〜9歳向けの読み聞かせ教材です。目安は10〜15分。問いかけのところで、子どもの言葉をゆっくり聞いてください。</p>
-   <h3>この課で学ぶこと</h3><ol><li>ヨナが神様の命令から逃げたために、神様の罰を受けたことを知る。</li><li>神様が正しいとされることを行う。</li><li>友だちのまちがいをゆるす。</li></ol>
-   <h3>聖句</h3><p>「しかし、わたしはあなたがたに言う。敵を愛し、迫害する者のために祈れ。」（マタイ5:44、口語訳）。冒頭で、この課の聖句を読みます。</p>
-   <h3>読み進め方</h3><p>文章や絵をクリックするか、「つぎへ」、スペースキー、右矢印キーで進みます。文字が流れている間は、1回押すと全文を表示します。「もどる」または左矢印で前へ。答えを選ぶ画面では、選んでから進みます。</p>
-   <p>「しおりをはさむ」は手動保存です。自動保存もあり、表紙の「つづきから読む」で再開できます。保存は、このブラウザ・このアドレスで行われます。</p>
-   <h3>教材と聖書本文の区別</h3><div class="teacher-note">選択肢は理解とふり返りのためのものです。聖書の出来事や結末を変える分岐はありません。得点や失敗の罰もありません。絵の切り抜き表現や光、服装などは挿絵上の表現です。聖書は魚の種類や内部の様子を特定していません。</div>
-   <p>原文にあった、ニネベの偶像をすべて壊した、以後一度も攻撃しなかった等の断定は、改訂PDFと同様に加えていません。ヨナ書4章の続きは、この教材の範囲には加えていません。</p>
-   <p>あらしはこの物語の出来事です。すべての災難が本人の罪への罰だという一般則としては扱わないでください。断食や家畜への命令は当時の物語の説明で、児童に実行させる課題ではありません。</p>
-   <h3>資料</h3><p><a href="jonah_lesson_modern_japanese.pdf" target="_blank" rel="noopener">もとの改訂教材PDFを開く ↗</a><br>聖書範囲：ヨナ書。挿絵：プロジェクト内の6点。エンジン：Monogatari 2.8.0（MIT）。</p>
-  `,'授業の手引き');
+  } catch(err){console.error(err);toast('しおりを開けませんでした。表紙の絵から、お話をえらべます。');}
  }
  function helpDialog() {
   openDialog('自分のペースで読もう',`
@@ -123,8 +107,6 @@
  engine.registerListener('confirm-chapter',{callback:async(_e,el)=>{await saveBookmark();await startAt(el.data('label'));}});
  engine.registerListener('read-chapter',{callback:(_e,el)=>confirmRestart('Chapter'+el.data('chapter'))});
  engine.registerListener('resume',{callback:resume});
- engine.registerListener('chapters',{callback:chaptersDialog});
- engine.registerListener('teacher',{callback:teacherDialog});
  engine.registerListener('game-help',{callback:helpDialog});
  engine.registerListener('home',{callback:async()=>{clearTimeout(saveTimer);await saveBookmark();engine.autoPlay(false);await engine.showScreen('main');paintCards();}});
  engine.registerListener('quick-save',{callback:()=>saveBookmark(true)});

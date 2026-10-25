@@ -9,7 +9,7 @@
 <div id="monogatari"><visual-novel>
 <loading-screen></loading-screen>
 <main-screen>
- <header class="site-header"><a class="brand" href="./" aria-label="ヨナのものがたり ホーム"><img src="assets/favicon.svg" alt=""><span>ちいさな聖書の旅<small>BIBLE STORYBOOK</small></span></a><nav aria-label="メインメニュー"><button data-action="chapters">お話をえらぶ</button><button data-action="teacher">先生・保護者の方へ <span aria-hidden="true">↗</span></button></nav></header>
+ <header class="site-header"><a class="brand" href="./" aria-label="ヨナのものがたり ホーム"><img src="assets/favicon.svg" alt=""><span>ちいさな聖書の旅<small>BIBLE STORYBOOK</small></span></a></header>
  <main class="home-content">
  <section class="hero"><div class="hero-copy"><p class="eyebrow">幼年班 2-3-5 <span>／</span> ヨナ書</p><p class="hero-kicker">第五課　逃げた預言者</p><h1>ヨナの<br>ものがたり<span class="title-dot">。</span></h1><p class="hero-description">遠くへ逃げたヨナ。<br>大きな魚。そして、もう一度の一歩。<br>神様のあわれみを、いっしょに見つけよう。</p><div class="hero-actions"><button class="primary" data-action="begin" disabled>ものがたりを はじめる <span aria-hidden="true">→</span></button><button id="resume" class="secondary" data-action="resume" hidden>つづきから読む</button></div><p class="reading-note"><span aria-hidden="true">◷</span> 10〜15分 <span>・</span> 6つのお話 <span>・</span> 6〜9歳</p></div><div class="hero-art"><img src="assets/scenes/scene-1.webp" alt="ニネベの町を見つめるヨナ"><span class="art-caption">神様は、あきらめない。</span><span class="art-number">01 — 06</span></div></section>
  <section class="chapter-section" aria-labelledby="chapter-title"><div class="section-heading"><div><p class="eyebrow">THE JOURNEY</p><h2 id="chapter-title">6つの絵でたどる、ヨナの旅</h2></div><span class="section-note">読んで、えらんで、考えよう。</span></div><div id="chapter-cards" class="chapter-grid"></div></section>
@@ -18,7 +18,7 @@
  </main>
 </main-screen>
 <game-screen>
- <header class="game-header" data-action="noop"><button data-action="home" class="game-home" aria-label="表紙にもどる">← <span>表紙</span></button><div class="chapter-heading"><small id="chapter-count">ヨナのものがたり</small><span id="chapter-heading">はじめに</span></div><div class="game-tools"><button data-action="chapters" aria-label="お話をえらぶ">もくじ</button><button data-action="game-help" aria-label="あそび方と設定">あそび方</button></div></header>
+ <header class="game-header" data-action="noop"><button data-action="home" class="game-home" aria-label="表紙にもどる">← <span>表紙</span></button><div class="chapter-heading"><small id="chapter-count">ヨナのものがたり</small><span id="chapter-heading">はじめに</span></div><div class="game-tools"><button data-action="game-help" aria-label="あそび方と設定">あそび方</button></div></header>
  <div class="chapter-track" aria-hidden="true"><span id="chapter-progress"></span></div>
  <dialog-log></dialog-log><text-box></text-box>
  <div class="reading-controls" data-action="noop"><button data-action="back">← もどる</button><div class="middle-controls"><button data-action="quick-save">しおりをはさむ</button><button data-action="open-screen" data-open="load">しおりを開く</button></div><button class="next-button" data-action="next-dialog">つぎへ <span aria-hidden="true">→</span></button></div>
