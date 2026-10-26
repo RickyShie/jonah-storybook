@@ -92,6 +92,7 @@
   },true);
   await engine.init('#monogatari');
   window.JonahMotion.init(engine);
+  window.JonahTransition.init(engine);
   ready=true;applyPreferences();
   document.querySelector('[data-action="begin"]').disabled=false;
   engine.on('didUpdateState',()=>updateHUD());

@@ -4,8 +4,8 @@ import assert from 'node:assert/strict';
 import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 const root=path.resolve(path.dirname(fileURLToPath(import.meta.url)),'..');
-let story,scenes;
-const context=vm.createContext({window:{},monogatari:{assets(type,data){if(type==='scenes')scenes=data;},characters(){},script(data){story=data;}}});
+let story;const scenes={};
+const context=vm.createContext({window:{},monogatari:{assets(type,data){if(type==='scenes')Object.assign(scenes,data);},characters(){},script(data){story=data;}}});
 vm.runInContext(readFileSync(path.join(root,'js/script.js'),'utf8'),context);
 for(const [label,lines] of Object.entries(story))for(const line of lines){
  const targets=typeof line==='string'?[line]:line?.Choice?Object.values(line.Choice).filter(v=>v?.Do).map(v=>v.Do):[];

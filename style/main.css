@@ -53,3 +53,5 @@ main-screen .verse>div{min-width:0}
 game-screen video.scene-motion{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:1;background:transparent}
 game-screen video.scene-motion[hidden]{display:none!important}
 @media(max-width:700px){.game-tools button[data-action="toggle-motion"]{display:block;font-size:10px;padding:10px 5px}}
+game-screen canvas.scene-crossfade{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
+game-screen canvas.scene-crossfade[hidden]{display:none!important}

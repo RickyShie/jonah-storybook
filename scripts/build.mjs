@@ -14,6 +14,8 @@ const files = [
   'js/script.js',
   'js/main.js',
   'js/scene-motion.js',
+  'js/scene-transition.js',
+  'assets/scenes/scene-6-repentance.webp',
   'style/main.css',
   'assets/favicon.svg',
   ...Array.from({length: 6}, (_, i) => `assets/videos/scene-${i + 1}.mp4`),

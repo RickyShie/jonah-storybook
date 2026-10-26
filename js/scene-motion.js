@@ -49,5 +49,5 @@ window.JonahMotion = (() => {
   engine.registerListener('toggle-motion',{callback:()=>{userEnabled=!enabled();failed=false;sync();}});
   updateControl();
  }
- return {init,sync};
+ return {init,sync,isEnabled:enabled};
 })();

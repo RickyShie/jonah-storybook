@@ -3,6 +3,7 @@
 const ruby = (word, reading) => `<ruby>${word}<rt>${reading}</rt></ruby>`;
 const GOD = ruby('神様','かみさま');
 monogatari.assets('scenes', Object.fromEntries([1,2,3,4,5,6].map(i => [`scene${i}`, `scene-${i}.webp`])));
+monogatari.assets('scenes', {scene6repentance:'scene-6-repentance.webp'});
 monogatari.characters({
  n:{name:'おはなし',color:'#315958'},
  q:{name:'いっしょに考えよう',color:'#9b5b31'},
@@ -111,6 +112,7 @@ script.Chapter6 = [
  'n 今度は、ヨナは神様の言葉に従って、ニネベへ行きました。<br>ニネベは、とても大きな町でした。',
  'n ヨナは町の中を歩き、四十日たつと町が滅ぼされる、<br>という神様の警告を伝えました。',
  'n それは、このままでは町が大きなさばきを受ける、という知らせでした。<br>ニネベの人々は、神様の言葉を信じました。',
+ 'show scene scene6repentance',
  'n 王様にも、その知らせが届きました。<br>王様は、りっぱな王の服をぬぎました。',
  'n 王様はへりくだって、神様の前で自分のまちがいを認めました。',
  'n 王様と家来たちは、人々に'+ruby('断食','だんじき')+'をして神様に祈り、<br>悪い行いや、人を傷つけることをやめるように命じました。',
