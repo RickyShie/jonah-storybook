@@ -48,3 +48,8 @@ main-screen .verse>div{min-width:0}
 @media(max-width:360px){
  main-screen .chapter-grid{grid-template-columns:minmax(0,1fr);gap:25px}
 }
+/* Video follows the existing illustration bounds; it never covers the text or
+   choices. A hidden/blocked video exposes Monogatari's original still beneath. */
+game-screen video.scene-motion{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;pointer-events:none;z-index:1;background:transparent}
+game-screen video.scene-motion[hidden]{display:none!important}
+@media(max-width:700px){.game-tools button[data-action="toggle-motion"]{display:block;font-size:10px;padding:10px 5px}}

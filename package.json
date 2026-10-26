@@ -6,7 +6,7 @@
   "type": "module",
   "scripts": {
     "start": "node server.mjs",
-    "test": "node tests/story.test.mjs && node tests/pages.test.mjs",
+    "test": "node tests/story.test.mjs && node tests/motion.test.mjs && node tests/pages.test.mjs && node tests/media.test.mjs",
     "build": "node scripts/build.mjs",
     "preview": "node server.mjs --dist"
   },

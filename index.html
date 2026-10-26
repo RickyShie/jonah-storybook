@@ -4,7 +4,7 @@
 <meta name="description" content="ヨナ書を、6つの絵といっしょに。幼年班のための、読んで考える聖書ものがたり。">
 <meta name="theme-color" content="#173f43"><link rel="icon" href="assets/favicon.svg">
 <link rel="stylesheet" href="engine/core/monogatari.css"><link rel="stylesheet" href="style/main.css">
-<script defer src="engine/core/monogatari.js"></script><script defer src="js/options.js"></script><script defer src="js/chapters.js"></script><script defer src="js/script.js"></script><script defer src="js/main.js"></script>
+<script defer src="engine/core/monogatari.js"></script><script defer src="js/options.js"></script><script defer src="js/chapters.js"></script><script defer src="js/script.js"></script><script defer src="js/scene-motion.js"></script><script defer src="js/main.js"></script>
 </head><body><noscript>このものがたりを読むには、ブラウザのJavaScriptを有効にしてください。</noscript>
 <div id="monogatari"><visual-novel>
 <loading-screen></loading-screen>
@@ -18,7 +18,7 @@
  </main>
 </main-screen>
 <game-screen>
- <header class="game-header" data-action="noop"><button data-action="home" class="game-home" aria-label="表紙にもどる">← <span>表紙</span></button><div class="chapter-heading"><small id="chapter-count">ヨナのものがたり</small><span id="chapter-heading">はじめに</span></div><div class="game-tools"><button data-action="game-help" aria-label="あそび方と設定">あそび方</button></div></header>
+ <header class="game-header" data-action="noop"><button data-action="home" class="game-home" aria-label="表紙にもどる">← <span>表紙</span></button><div class="chapter-heading"><small id="chapter-count">ヨナのものがたり</small><span id="chapter-heading">はじめに</span></div><div class="game-tools"><button data-action="toggle-motion" aria-pressed="true">動きを止める</button><button data-action="game-help" aria-label="あそび方と設定">あそび方</button></div></header>
  <div class="chapter-track" aria-hidden="true"><span id="chapter-progress"></span></div>
  <dialog-log></dialog-log><text-box></text-box>
  <div class="reading-controls" data-action="noop"><button data-action="back">← もどる</button><button class="next-button" data-action="next-dialog">つぎへ <span aria-hidden="true">→</span></button></div>

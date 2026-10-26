@@ -13,8 +13,10 @@ const files = [
   'js/chapters.js',
   'js/script.js',
   'js/main.js',
+  'js/scene-motion.js',
   'style/main.css',
   'assets/favicon.svg',
+  ...Array.from({length: 6}, (_, i) => `assets/videos/scene-${i + 1}.mp4`),
   ...Array.from({length: 6}, (_, i) => `assets/scenes/scene-${i + 1}.webp`),
   'jonah_lesson_modern_japanese.pdf'
 ];

@@ -1,0 +1,67 @@
+[
+  {
+    "scene": 1,
+    "kind": "character",
+    "prompt": "Use case: background-extraction. Edit target: supplied biblical ink-and-watercolor storybook illustration. Extract ONLY Jonah as a genuinely transparent PNG foreground for 2D animation. Jonah is the main full-body man at the LEFT foreground under the tree, curly brown hair, short beard, mustard tunic, blue shawl, hand touching his chin. Leave the tree, city and terrain untouched. Preserve his EXACT appearance, face, clothing, visible pose, painted linework, scale and position on the original FULL LANDSCAPE canvas. Do not enlarge, recenter, crop, rotate or redesign him. Every pixel outside his visible silhouette must be transparent, including background, floor, furniture, other people, shadows and glows. Keep occluded body parts occluded; don't invent hidden parts. No text."
+  },
+  {
+    "scene": 1,
+    "kind": "background",
+    "prompt": "Use case: precise-object-edit. Edit target: supplied biblical ink-and-watercolor storybook illustration. Produce a clean background plate for 2D animation. Remove ONLY Jonah. Jonah is the main full-body man at the LEFT foreground under the tree, curly brown hair, short beard, mustard tunic, blue shawl, hand touching his chin. Leave the tree, city and terrain untouched. Reconstruct only the area hidden by Jonah, plausibly extending the existing painted surroundings. No new characters or objects. Preserve the original exact landscape aspect ratio, full canvas framing, positions, lighting, watercolor texture and ink linework. Do not reframe, crop, zoom or change the scene. All other people remain exactly as drawn. No text."
+  },
+  {
+    "scene": 2,
+    "kind": "background",
+    "prompt": "Use case: precise-object-edit. Edit target: supplied biblical ink-and-watercolor storybook illustration. Produce a clean background plate for 2D animation. Remove ONLY Jonah. Jonah is the reclining mustard-tunic man in the LEFT/CENTER foreground, eyes closed with both hands behind his head, blue shawl. Other sailors and all ship objects must remain untouched. Reconstruct only the area hidden by Jonah, plausibly extending the existing painted surroundings. No new characters or objects. Preserve the original exact landscape aspect ratio, full canvas framing, positions, lighting, watercolor texture and ink linework. Do not reframe, crop, zoom or change the scene. All other people remain exactly as drawn. No text."
+  },
+  {
+    "scene": 2,
+    "kind": "character",
+    "prompt": "Use case: background-extraction. Edit target: supplied biblical ink-and-watercolor storybook illustration. Extract ONLY Jonah as a genuinely transparent PNG foreground for 2D animation. Jonah is the reclining mustard-tunic man in the LEFT/CENTER foreground, eyes closed with both hands behind his head, blue shawl. Other sailors and all ship objects must remain untouched. Preserve his EXACT appearance, face, clothing, visible pose, painted linework, scale and position on the original FULL LANDSCAPE canvas. Do not enlarge, recenter, crop, rotate or redesign him. Every pixel outside his visible silhouette must be transparent, including background, floor, furniture, other people, shadows and glows. Keep occluded body parts occluded; don't invent hidden parts. No text."
+  },
+  {
+    "scene": 3,
+    "kind": "background",
+    "prompt": "Use case: precise-object-edit. Edit target: supplied biblical ink-and-watercolor storybook illustration. Produce a clean background plate for 2D animation. Remove ONLY Jonah. Jonah is ONLY the small sleeping brown-haired bearded mustard-tunic man visible through the open hatch in the LOWER part of the ship. Do NOT select any sailor above him. Extract only his visible painted portion, do not invent legs or hidden parts. Keep the wooden hatch border and all sailors unchanged. Reconstruct only the area hidden by Jonah, plausibly extending the existing painted surroundings. No new characters or objects. Preserve the original exact landscape aspect ratio, full canvas framing, positions, lighting, watercolor texture and ink linework. Do not reframe, crop, zoom or change the scene. All other people remain exactly as drawn. No text."
+  },
+  {
+    "scene": 3,
+    "kind": "character",
+    "prompt": "Use case: background-extraction. Edit target: supplied biblical ink-and-watercolor storybook illustration. Extract ONLY Jonah as a genuinely transparent PNG foreground for 2D animation. Jonah is ONLY the small sleeping brown-haired bearded mustard-tunic man visible through the open hatch in the LOWER part of the ship. Do NOT select any sailor above him. Extract only his visible painted portion, do not invent legs or hidden parts. Keep the wooden hatch border and all sailors unchanged. Preserve his EXACT appearance, face, clothing, visible pose, painted linework, scale and position on the original FULL LANDSCAPE canvas. Do not enlarge, recenter, crop, rotate or redesign him. Every pixel outside his visible silhouette must be transparent, including background, floor, furniture, other people, shadows and glows. Keep occluded body parts occluded; don't invent hidden parts. No text."
+  },
+  {
+    "scene": 4,
+    "kind": "background",
+    "prompt": "Use case: precise-object-edit. Edit target: supplied biblical ink-and-watercolor storybook illustration. Produce a clean background plate for 2D animation. Remove ONLY Jonah. Jonah is ONLY the curly-haired bearded mustard-tunic man with blue shawl hanging over the ship's side at the CENTER-LEFT. Do not select the other sailors. Keep the sailors' hands and wooden ship unchanged; preserve Jonah's complete visible pose. Reconstruct only the area hidden by Jonah, plausibly extending the existing painted surroundings. No new characters or objects. Preserve the original exact landscape aspect ratio, full canvas framing, positions, lighting, watercolor texture and ink linework. Do not reframe, crop, zoom or change the scene. All other people remain exactly as drawn. No text."
+  },
+  {
+    "scene": 4,
+    "kind": "character",
+    "prompt": "Use case: background-extraction. Edit target: supplied biblical ink-and-watercolor storybook illustration. Extract ONLY Jonah as a genuinely transparent PNG foreground for 2D animation. Jonah is ONLY the curly-haired bearded mustard-tunic man with blue shawl hanging over the ship's side at the CENTER-LEFT. Do not select the other sailors. Keep the sailors' hands and wooden ship unchanged; preserve Jonah's complete visible pose. Preserve his EXACT appearance, face, clothing, visible pose, painted linework, scale and position on the original FULL LANDSCAPE canvas. Do not enlarge, recenter, crop, rotate or redesign him. Every pixel outside his visible silhouette must be transparent, including background, floor, furniture, other people, shadows and glows. Keep occluded body parts occluded; don't invent hidden parts. No text."
+  },
+  {
+    "scene": 6,
+    "kind": "background",
+    "prompt": "Use case: precise-object-edit. Edit target: supplied biblical ink-and-watercolor storybook illustration. Produce a clean background plate for 2D animation. Remove ONLY Jonah. Jonah is ONLY the standing preaching curly brown-haired bearded man on the LEFT with mustard tunic and blue shawl, one raised arm pointing toward the crowd. Do not select any crowd member or king. Keep all other people and city objects unchanged. Reconstruct only the area hidden by Jonah, plausibly extending the existing painted surroundings. No new characters or objects. Preserve the original exact landscape aspect ratio, full canvas framing, positions, lighting, watercolor texture and ink linework. Do not reframe, crop, zoom or change the scene. All other people remain exactly as drawn. No text."
+  },
+  {
+    "scene": 6,
+    "kind": "character",
+    "prompt": "Use case: background-extraction. Edit target: supplied biblical ink-and-watercolor storybook illustration. Extract ONLY Jonah as a genuinely transparent PNG foreground for 2D animation. Jonah is ONLY the standing preaching curly brown-haired bearded man on the LEFT with mustard tunic and blue shawl, one raised arm pointing toward the crowd. Do not select any crowd member or king. Keep all other people and city objects unchanged. Preserve his EXACT appearance, face, clothing, visible pose, painted linework, scale and position on the original FULL LANDSCAPE canvas. Do not enlarge, recenter, crop, rotate or redesign him. Every pixel outside his visible silhouette must be transparent, including background, floor, furniture, other people, shadows and glows. Keep occluded body parts occluded; don't invent hidden parts. No text."
+  },
+  {
+    "scene": 4,
+    "kind": "background-repair",
+    "prompt": "Edit target Image 1 is the original storm-at-sea Bible illustration. Create an animation background plate by removing ONLY the hanging man Jonah in mustard yellow and blue at center-left. Fill only his silhouette with matching existing ship/ocean. KEEP THE ENORMOUS UNDERWATER FISH at bottom-right EXACTLY AS IN THE ORIGINAL: its entire blue silhouette, round eye, snout and mouth must remain clearly visible below the waves. Also preserve all sailors, their hands, rope, ship, waves, rain, sunlight, colors, composition, framing and exact 16:9 landscape dimensions. No other object may be removed or altered. No people added, no text. This is localized removal of Jonah only, not a new illustration."
+  },
+  {
+    "scene": 5,
+    "kind": "background",
+    "prompt": "Edit target: the supplied 1672x941 landscape ink-and-watercolor biblical storybook illustration. Create a CLEAN BACKGROUND PLATE for 2D animation. Remove ONLY Jonah completely, including his hair, face, clasped hands, mustard tunic, blue shawl, belt and feet. Reconstruct the fish belly interior behind his entire silhouette using the same textured warm brown watercolor walls and floor, keeping the existing faint golden ambient light. Preserve the exact fish silhouette, face, cutaway opening, ocean, small fishes, bubbles, rocks, all composition and framing, aspect ratio and style. No humans remain. Do not move, crop, resize or redesign any surrounding object. No text."
+  },
+  {
+    "scene": 5,
+    "kind": "character",
+    "prompt": "Edit target: supplied ink-and-watercolor Bible storybook illustration. Extract ONLY the existing kneeling praying Jonah as a clean transparent PNG cutout for animation. Preserve the same full landscape canvas 1672x941 composition/aspect, Jonah's exact size and position in the image, curled brown hair, closed eyes, short beard, bowed head, clasped hands, mustard yellow tunic, belt, blue shawl, kneeling legs and leather sandals. Preserve exact character identity, ink contours, watercolor texture and prayer pose. Everything outside Jonah's silhouette must be truly transparent: remove the entire fish, fish belly interior, golden glow, ocean, bubbles, floor and shadows. Do not add any glow, border, drop shadow or ground. Do not recenter or enlarge him. It must align as a foreground overlay on the source. No text."
+  }
+]

@@ -60,6 +60,7 @@
    <p>ほかのお話を読みたいときは「表紙」にもどり、6枚の絵からえらんでください。えらんだお話のはじめから、すぐに読めます。</p>
    <label class="setting-row">文字の大きさ<select id="font-size" aria-label="文字の大きさ"><option value="normal">ふつう</option><option value="large">大きく</option></select></label>
    <label class="setting-row">文字の出かた<select id="type-mode" aria-label="文字の出かた"><option value="flow">ゆっくり</option><option value="instant">まとめて</option></select></label>
+   <p>「動きを止める」で絵を静止できます。端末で動きを減らす設定をしている場合は、はじめから静止画になります。</p>
    <p>声に出して読んだり、おうちの人や先生といっしょに考えたりしてね。</p>
   `,'あそび方');
   const font=document.getElementById('font-size'), type=document.getElementById('type-mode');
@@ -75,7 +76,7 @@
  engine.registerListener('begin',{callback:()=>startAt('Start')});
  engine.registerListener('read-chapter',{callback:(_e,el)=>startAt('Chapter'+el.data('chapter'))});
  engine.registerListener('game-help',{callback:helpDialog});
- engine.registerListener('home',{callback:async()=>{engine.autoPlay(false);await engine.showScreen('main');paintCards();}});
+ engine.registerListener('home',{callback:async()=>{engine.autoPlay(false);await engine.showScreen('main');window.JonahMotion.sync();paintCards();}});
  engine.registerListener('next-dialog',{callback:async()=>{try{await engine.proceed({userInitiated:true});}catch{/* Choices deliberately block advancing. */}}});
  window.JonahBook={complete(){toast('ヨナの旅を、最後まで読みました。');}};
  Monogatari.$_ready(async()=>{
@@ -90,6 +91,7 @@
    }
   },true);
   await engine.init('#monogatari');
+  window.JonahMotion.init(engine);
   ready=true;applyPreferences();
   document.querySelector('[data-action="begin"]').disabled=false;
   engine.on('didUpdateState',()=>updateHUD());

@@ -5,7 +5,8 @@ window.JONAH_CHAPTERS = [
     "title": "ニネベへの呼びかけ",
     "description": "神様の言葉と、ヨナの気持ち。",
     "label": "Chapter1",
-    "image": "assets/scenes/scene-1.webp"
+    "image": "assets/scenes/scene-1.webp",
+    "video": "assets/videos/scene-1.mp4"
   },
   {
     "number": 2,
@@ -13,7 +14,8 @@ window.JONAH_CHAPTERS = [
     "title": "遠くへ向かう船",
     "description": "神様から、逃げられるのかな。",
     "label": "Chapter2",
-    "image": "assets/scenes/scene-2.webp"
+    "image": "assets/scenes/scene-2.webp",
+    "video": "assets/videos/scene-2.mp4"
   },
   {
     "number": 3,
@@ -21,7 +23,8 @@ window.JONAH_CHAPTERS = [
     "title": "海の上のあらし",
     "description": "大きな波の中で、何が起きる？",
     "label": "Chapter3",
-    "image": "assets/scenes/scene-3.webp"
+    "image": "assets/scenes/scene-3.webp",
+    "video": "assets/videos/scene-3.mp4"
   },
   {
     "number": 4,
@@ -29,7 +32,8 @@ window.JONAH_CHAPTERS = [
     "title": "静かになった海",
     "description": "船の人たちが知った、神様の力。",
     "label": "Chapter4",
-    "image": "assets/scenes/scene-4.webp"
+    "image": "assets/scenes/scene-4.webp",
+    "video": "assets/videos/scene-4.mp4"
   },
   {
     "number": 5,
@@ -37,7 +41,8 @@ window.JONAH_CHAPTERS = [
     "title": "暗い場所からの祈り",
     "description": "どこにいても、神様に祈れる。",
     "label": "Chapter5",
-    "image": "assets/scenes/scene-5.webp"
+    "image": "assets/scenes/scene-5.webp",
+    "video": "assets/videos/scene-5.mp4"
   },
   {
     "number": 6,
@@ -45,6 +50,7 @@ window.JONAH_CHAPTERS = [
     "title": "もう一度、ニネベへ",
     "description": "心と行いを変えた人たち。",
     "label": "Chapter6",
-    "image": "assets/scenes/scene-6.webp"
+    "image": "assets/scenes/scene-6.webp",
+    "video": "assets/videos/scene-6.mp4"
   }
 ];

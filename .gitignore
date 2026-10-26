@@ -27,3 +27,6 @@ yarn-error.log*
 # Generated GitHub Pages build
 /dist/
 /.pages-build-*/
+
+# Scratch frames from optional animation rendering
+/.animation-render/

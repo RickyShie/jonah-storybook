@@ -23,7 +23,11 @@ for (const file of ['options.js', 'chapters.js', 'script.js']) {
   vm.runInContext(await readFile(path.join(output, 'js', file), 'utf8'), context);
 }
 for (const file of Object.values(scenes)) references.add(`${assetsPath.root}/${assetsPath.scenes}/${file}`);
-for (const chapter of context.window.JONAH_CHAPTERS) references.add(chapter.image);
+for (const chapter of context.window.JONAH_CHAPTERS) {
+ references.add(chapter.image);
+ assert.ok(chapter.video, `Scene ${chapter.number} is missing its animation`);
+ references.add(chapter.video);
+}
 const main = await readFile(path.join(output, 'js/main.js'), 'utf8');
 for (const [, href] of main.matchAll(/href="([^"]+)"/g)) references.add(href);
 
