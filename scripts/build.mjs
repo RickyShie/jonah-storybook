@@ -13,6 +13,7 @@ const files = [
   'js/chapters.js',
   'js/script.js',
   'js/main.js',
+  'js/reading-layout.js',
   'js/scene-motion.js',
   'js/scene-transition.js',
   'assets/scenes/scene-5-rescue.png',

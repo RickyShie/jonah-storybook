@@ -40,3 +40,20 @@ for(const answer of [0,1]){
  for(let i=1;i<=6;i++)assert.ok(visited.includes(`Chapter${i}`));
 }
 console.log(`PASS: ${Object.keys(story).length} labels, all links and six local scenes, both answer routes reach the complete lesson.`);
+
+// Scripture is quoted exactly even though narration is simplified.
+const plain=html=>html.replace(/<rt>.*?<\/rt>/g,'').replace(/<[^>]+>/g,'');
+const exactVerse='しかし、わたしはあなたがたに言う。敵を愛し、迫害する者のために祈れ。';
+for (const label of ['Start','Reflection']) {
+ const verse=story[label].find(line=>typeof line==='string'&&line.startsWith('v '));
+ const content=/<span class="memory-verse">(.*?)<\/span>/.exec(verse)?.[1];
+ assert.ok(content, 'The complete verse needs its own reading layout');
+ assert.equal(plain(content),exactVerse);
+ assert.equal(/[一-龯]/.test(content.replace(/<ruby>.*?<\/ruby>/g,'')),false,'Every kanji group has furigana');
+}
+const cover=readFileSync(path.join(root,'index.html'),'utf8');
+assert.equal(plain(/<blockquote>(.*?)<\/blockquote>/.exec(cover)[1]),exactVerse);
+for (const name of ['ヨナ','ニネベ','タルシシ']) {
+ assert.ok(Object.values(story).flat().some(line=>typeof line==='string'&&line.includes(`<strong class="story-name">${name}</strong>`)));
+}
+console.log('PASS: unchanged Scripture, complete verse readings, and highlighted names.');

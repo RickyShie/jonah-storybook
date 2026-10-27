@@ -58,18 +58,16 @@
   openDialog('自分のペースで読もう',`
    <p>「つぎへ」、スペースキー、右矢印で進みます。絵や文章を押しても進めます。「もどる」または左矢印で前へ。答えをえらぶときは、ボタンを押してください。</p>
    <p>ほかのお話を読みたいときは「表紙」にもどり、6枚の絵からえらんでください。えらんだお話のはじめから、すぐに読めます。</p>
-   <label class="setting-row">文字の大きさ<select id="font-size" aria-label="文字の大きさ"><option value="normal">ふつう</option><option value="large">大きく</option></select></label>
+   <p>画面の下の「文字」のつまみで、文字を大きくしたり、小さくしたりできます。絵と文章の間のつまみを上下に動かすと、文章の高さを変えられます。「標準」で元にもどります。</p>
    <label class="setting-row">文字の出かた<select id="type-mode" aria-label="文字の出かた"><option value="flow">ゆっくり</option><option value="instant">まとめて</option></select></label>
    <p>「動きを止める」で絵を静止できます。端末で動きを減らす設定をしている場合は、はじめから静止画になります。</p>
    <p>声に出して読んだり、おうちの人や先生といっしょに考えたりしてね。</p>
   `,'あそび方');
-  const font=document.getElementById('font-size'), type=document.getElementById('type-mode');
-  font.value=safeLocal.get('font','normal');type.value=safeLocal.get('type','flow');
-  font.onchange=()=>{safeLocal.set('font',font.value);applyPreferences();};
+  const type=document.getElementById('type-mode');
+  type.value=safeLocal.get('type','flow');
   type.onchange=()=>{safeLocal.set('type',type.value);applyPreferences();};
  }
  function applyPreferences() {
-  document.documentElement.style.setProperty('--dialog-size',safeLocal.get('font')==='large'?'27px':'');
   engine.setting('TypeAnimation',safeLocal.get('type','flow')!=='instant'&&!matchMedia('(prefers-reduced-motion: reduce)').matches);
  }
  engine.registerListener('noop',{callback:()=>true});
@@ -93,6 +91,7 @@
   await engine.init('#monogatari');
   window.JonahMotion.init(engine);
   window.JonahTransition.init(engine);
+  window.JonahReadingLayout.init();
   ready=true;applyPreferences();
   document.querySelector('[data-action="begin"]').disabled=false;
   engine.on('didUpdateState',()=>updateHUD());

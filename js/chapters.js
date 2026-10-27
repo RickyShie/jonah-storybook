@@ -1,7 +1,7 @@
 window.JONAH_CHAPTERS = [
   {
     "number": 1,
-    "heading": "神の命令を聞かない預言者",
+    "heading": "神様の言葉とヨナ",
     "title": "ニネベへの呼びかけ",
     "description": "神様の言葉と、ヨナの気持ち。",
     "label": "Chapter1",
@@ -10,7 +10,7 @@ window.JONAH_CHAPTERS = [
   },
   {
     "number": 2,
-    "heading": "ヨナは神を避ける",
+    "heading": "神様から逃げようとするヨナ",
     "title": "遠くへ向かう船",
     "description": "神様から、逃げられるのかな。",
     "label": "Chapter2",
@@ -19,7 +19,7 @@ window.JONAH_CHAPTERS = [
   },
   {
     "number": 3,
-    "heading": "神は怒った",
+    "heading": "神様が起こされたあらし",
     "title": "海の上のあらし",
     "description": "大きな波の中で、何が起きる？",
     "label": "Chapter3",
@@ -28,7 +28,7 @@ window.JONAH_CHAPTERS = [
   },
   {
     "number": 4,
-    "heading": "ヨナは海に落とされる",
+    "heading": "海に投げ入れられたヨナ",
     "title": "静かになった海",
     "description": "船の人たちが知った、神様の力。",
     "label": "Chapter4",
@@ -37,7 +37,7 @@ window.JONAH_CHAPTERS = [
   },
   {
     "number": 5,
-    "heading": "魚の中での祈り",
+    "heading": "魚のおなかの中で祈るヨナ",
     "title": "暗い場所からの祈り",
     "description": "どこにいても、神様に祈れる。",
     "label": "Chapter5",
@@ -46,9 +46,9 @@ window.JONAH_CHAPTERS = [
   },
   {
     "number": 6,
-    "heading": "ヨナは勇敢に神の命令を遂行した",
+    "heading": "神様の言葉を伝えるヨナ",
     "title": "もう一度、ニネベへ",
-    "description": "心と行いを変えた人たち。",
+    "description": "悪いことをやめた人たち。",
     "label": "Chapter6",
     "image": "assets/scenes/scene-6-warning.png"
   }

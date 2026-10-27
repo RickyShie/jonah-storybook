@@ -55,3 +55,53 @@ game-screen video.scene-motion[hidden]{display:none!important}
 @media(max-width:700px){.game-tools button[data-action="toggle-motion"]{display:block;font-size:10px;padding:10px 5px}}
 game-screen canvas.scene-crossfade{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:2}
 game-screen canvas.scene-crossfade[hidden]{display:none!important}
+
+/* Names stay identifiable without relying on color alone. */
+.story-name{font-weight:750;color:#b42318}
+/* Generous line spacing keeps each reading clearly above its kanji. */
+main-screen .verse blockquote{font-family:var(--sans);font-size:clamp(24px,3vw,34px);line-height:2.25;letter-spacing:.02em}
+main-screen .verse cite{display:block;font-size:16px;line-height:2.1;font-style:normal}
+ruby{ruby-position:over}ruby rt{font-family:var(--sans);font-weight:500}
+text-box .memory-verse{display:block;font-size:clamp(26px,3vw,36px)!important;line-height:2.25!important;letter-spacing:.025em;font-weight:500;padding-top:.4em}
+text-box .memory-verse rt,main-screen .verse rt{font-size:.5em;color:var(--ink)}
+text-box .verse-reference{display:block;font-size:17px;line-height:2.2;margin-top:18px;padding-bottom:8px}
+text-box:has(.memory-verse){height:clamp(290px,52dvh,450px)!important;max-height:none!important}
+game-screen:has(.memory-verse) [data-content=visuals]{bottom:calc(clamp(290px,52dvh,450px) + 65px)!important}
+@media(max-width:700px){
+ text-box:has(.memory-verse){height:clamp(310px,56dvh,480px)!important;padding-inline:22px!important}
+ game-screen:has(.memory-verse) [data-content=visuals]{bottom:calc(clamp(310px,56dvh,480px) + 70px)!important}
+ text-box .verse-reference{font-size:15px}
+ main-screen .verse cite{font-size:14px}
+}
+@media(max-height:600px){
+ text-box:has(.memory-verse){height:calc(100dvh - 126px)!important}
+ game-screen:has(.memory-verse) [data-content=visuals]{visibility:hidden}
+}
+
+text-box .memory-verse ruby{font-size:inherit!important}text-box .memory-verse rt{font-size:.5em!important}
+
+/* One shared height keeps the picture, choices and draggable divider aligned. */
+game-screen{--reading-footer:65px;--reading-default-height:190px;--reading-top:76px}
+game-screen:has(.memory-verse){--reading-default-height:clamp(290px,52dvh,450px)}
+game-screen text-box,game-screen text-box:has(.memory-verse){height:var(--reading-panel-height,var(--reading-default-height))!important;max-height:none!important;bottom:var(--reading-footer)!important}
+game-screen [data-content=visuals],game-screen:has(.memory-verse) [data-content=visuals],game-screen choice-container{top:var(--reading-top)!important;bottom:calc(var(--reading-panel-height,var(--reading-default-height)) + var(--reading-footer))!important;visibility:visible}
+#reading-divider{position:absolute;left:0;right:0;bottom:calc(var(--reading-panel-height,var(--reading-default-height)) + var(--reading-footer) - 12px);height:24px;z-index:30;cursor:ns-resize;touch-action:none;display:flex;align-items:center;justify-content:center}
+#reading-divider span{width:70px;height:7px;border-radius:5px;background:#b78045;box-shadow:0 0 0 4px var(--paper)}
+#reading-divider:hover span,#reading-divider.dragging span,#reading-divider:focus-visible span{background:var(--teal)}
+#reading-divider:focus-visible{outline:2px solid var(--teal);outline-offset:-2px}
+game-screen text-box type-writer{font-size:var(--reading-font-size,23px)!important}
+game-screen text-box .memory-verse{font-size:calc(var(--reading-font-size,23px) * 1.25)!important}
+game-screen text-box .verse-reference{font-size:calc(var(--reading-font-size,23px) * .75)!important}
+game-screen choice-container button{font-size:var(--reading-font-size,23px)!important}
+.font-controls{display:flex;align-items:center;justify-content:center;gap:8px;min-width:0;font-size:12px}
+.font-controls input{width:clamp(70px,13vw,180px);min-width:55px;margin:0;accent-color:var(--teal);cursor:pointer;touch-action:pan-y}
+.font-controls output{min-width:32px;font-size:11px;font-variant-numeric:tabular-nums}
+.reading-controls #reset-reading{padding:8px;font-size:11px}
+@media(max-width:700px){
+ game-screen{--reading-footer:70px;--reading-default-height:215px;--reading-top:68px}
+ game-screen:has(.memory-verse){--reading-default-height:clamp(310px,56dvh,480px)}
+ .font-controls{gap:4px;font-size:10px}.font-controls input{width:65px}.font-controls output{min-width:28px;font-size:10px}
+ .reading-controls #reset-reading{font-size:10px;padding:6px 4px}
+}
+@media(max-height:600px) and (min-width:701px){game-screen{--reading-footer:50px;--reading-default-height:132px;--reading-top:52px}}
+@media(max-height:600px){game-screen:has(.memory-verse){--reading-default-height:calc(100dvh - 140px)}}
