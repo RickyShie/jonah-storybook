@@ -3,7 +3,7 @@
 const ruby = (word, reading) => `<ruby>${word}<rt>${reading}</rt></ruby>`;
 const GOD = ruby('神様','かみさま');
 monogatari.assets('scenes', Object.fromEntries([1,2,3,4,5,6].map(i => [`scene${i}`, `scene-${i}.webp`])));
-monogatari.assets('scenes', {scene6repentance:'scene-6-repentance.webp'});
+monogatari.assets('scenes', {scene6:'scene-6-warning.png',scene6repentance:'scene-7-repentance.png'});
 monogatari.characters({
  n:{name:'おはなし',color:'#315958'},
  q:{name:'いっしょに考えよう',color:'#9b5b31'},

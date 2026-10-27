@@ -15,7 +15,7 @@ context.window.JonahTransition.init({on(name,fn){callbacks[name]=fn;}});
 const event={detail:{action:{_statement:'show scene scene6repentance'}}};
 callbacks.willRunAction(event);assert.equal(overlay.hidden,false);assert.equal(drawn.at(-1),video,'Crossfade must capture the currently displayed animation');
 callbacks.didRunAction(event);assert.equal(fades.at(-1).duration,900);await Promise.resolve();assert.equal(overlay.hidden,true);
-video.hidden=true;callbacks.willRevertAction(event);assert.ok(drawn.at(-1).src.endsWith('scene-6-repentance.webp'),'Rollback captures the second illustration');
+video.hidden=true;callbacks.willRevertAction(event);assert.ok(drawn.at(-1).src.endsWith('scene-7-repentance.png'),'Rollback captures the second illustration');
 callbacks.didRevertAction(event);await Promise.resolve();assert.equal(overlay.hidden,true);
 enabled=false;const count=drawn.length;callbacks.willRunAction(event);callbacks.didRunAction(event);assert.equal(drawn.length,count,'Motion disabled must switch without a crossfade');
 enabled=true;callbacks.willRunAction(event);callbacks.willRunAction({detail:{action:{_statement:'show scene scene1 with fadeIn'}}});assert.equal(overlay.hidden,true,'An interrupted transition must not cover a different chapter');

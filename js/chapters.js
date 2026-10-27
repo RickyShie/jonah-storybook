@@ -50,7 +50,6 @@ window.JONAH_CHAPTERS = [
     "title": "もう一度、ニネベへ",
     "description": "心と行いを変えた人たち。",
     "label": "Chapter6",
-    "image": "assets/scenes/scene-6.webp",
-    "video": "assets/videos/scene-6.mp4"
+    "image": "assets/scenes/scene-6-warning.png"
   }
 ];

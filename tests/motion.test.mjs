@@ -26,4 +26,12 @@ game.visible=true;document.hidden=true;motion.sync();assert.equal(video.paused,t
 document.hidden=false;motion.sync();video.events.error();assert.equal(video.hidden,true,'A failed movie must expose the original still');assert.equal(video.paused,true);
 const plays=video.plays;motion.sync();assert.equal(video.plays,plays,'Do not repeatedly retry a broken movie');
 engine.scene='show scene scene1 with fadeIn';motion.sync();assert.equal(video.src,'scene-1.mp4');assert.equal(video.paused,false,'A failed chapter must not prevent the next chapter from playing');
+// Replaced artwork must never be covered by the obsolete Nineveh movie,
+// including a late 'playing' event from the previous chapter.
+context.window.JONAH_CHAPTERS[5]={image:'scene-6-warning.png'};
+engine.scene='show scene scene6 with fadeIn';motion.sync();
+assert.equal(video.hidden,true);assert.equal(video.paused,true);
+video.events.playing();assert.equal(video.hidden,true,'A late event must not reveal old artwork');
+engine.scene='show scene scene6repentance';motion.sync();
+assert.equal(video.hidden,true,'Repentance keeps its separate still illustration');
 console.log('PASS: reduced motion, explicit override, chapter switching, background pause, and video-error still fallback.');

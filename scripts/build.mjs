@@ -3,7 +3,7 @@ import path from 'node:path';
 import {fileURLToPath} from 'node:url';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-// An explicit list keeps development files and original PNGs out of the website.
+// An explicit list keeps development files and unused original artwork out of the website.
 const files = [
   'index.html',
   'engine/core/monogatari.js',
@@ -15,11 +15,12 @@ const files = [
   'js/main.js',
   'js/scene-motion.js',
   'js/scene-transition.js',
-  'assets/scenes/scene-6-repentance.webp',
+  'assets/scenes/scene-6-warning.png',
+  'assets/scenes/scene-7-repentance.png',
   'style/main.css',
   'assets/favicon.svg',
-  ...Array.from({length: 6}, (_, i) => `assets/videos/scene-${i + 1}.mp4`),
-  ...Array.from({length: 6}, (_, i) => `assets/scenes/scene-${i + 1}.webp`),
+  ...Array.from({length: 5}, (_, i) => `assets/videos/scene-${i + 1}.mp4`),
+  ...Array.from({length: 5}, (_, i) => `assets/scenes/scene-${i + 1}.webp`),
   'jonah_lesson_modern_japanese.pdf'
 ];
 

@@ -9,7 +9,7 @@ window.JonahTransition = (() => {
   overlay.hidden=true;overlay.setAttribute('aria-hidden','true');visuals.append(overlay);
   const ctx=overlay.getContext('2d');
   const before=new Image(),after=new Image();
-  before.src='assets/scenes/scene-6.webp';after.src='assets/scenes/scene-6-repentance.webp';
+  before.src='assets/scenes/scene-6-warning.png';after.src='assets/scenes/scene-7-repentance.png';
   let animation=null;
   const matches=event=>event.detail?.action?._statement===statement;
   function capture(reverse){

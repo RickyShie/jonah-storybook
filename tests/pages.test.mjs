@@ -25,8 +25,13 @@ for (const file of ['options.js', 'chapters.js', 'script.js']) {
 for (const file of Object.values(scenes)) references.add(`${assetsPath.root}/${assetsPath.scenes}/${file}`);
 for (const chapter of context.window.JONAH_CHAPTERS) {
  references.add(chapter.image);
- assert.ok(chapter.video, `Scene ${chapter.number} is missing its animation`);
- references.add(chapter.video);
+ if (chapter.video) references.add(chapter.video);
+}
+assert.equal(scenes.scene6, 'scene-6-warning.png');
+assert.equal(scenes.scene6repentance, 'scene-7-repentance.png');
+assert.equal(context.window.JONAH_CHAPTERS[5].video, undefined);
+for (const obsolete of ['assets/videos/scene-6.mp4', 'assets/scenes/scene-6.webp', 'assets/scenes/scene-6-repentance.webp']) {
+ assert.equal(await stat(path.join(output, obsolete)).then(() => true, () => false), false, `${obsolete} must not be published`);
 }
 const main = await readFile(path.join(output, 'js/main.js'), 'utf8');
 for (const [, href] of main.matchAll(/href="([^"]+)"/g)) references.add(href);
