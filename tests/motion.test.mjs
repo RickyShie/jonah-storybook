@@ -26,6 +26,11 @@ game.visible=true;document.hidden=true;motion.sync();assert.equal(video.paused,t
 document.hidden=false;motion.sync();video.events.error();assert.equal(video.hidden,true,'A failed movie must expose the original still');assert.equal(video.paused,true);
 const plays=video.plays;motion.sync();assert.equal(video.plays,plays,'Do not repeatedly retry a broken movie');
 engine.scene='show scene scene1 with fadeIn';motion.sync();assert.equal(video.src,'scene-1.mp4');assert.equal(video.paused,false,'A failed chapter must not prevent the next chapter from playing');
+engine.scene='show scene scene5rescue with fadeIn';motion.sync();
+assert.equal(video.hidden,true,'Shoreline rescue must not display the fish-belly animation');
+video.events.playing();assert.equal(video.hidden,true,'Late playback must not cover the rescue image');
+engine.scene='show scene scene5 with fadeIn';motion.sync();video.events.playing();
+assert.equal(video.hidden,false,'Returning to the fish restores its animation');
 // Replaced artwork must never be covered by the obsolete Nineveh movie,
 // including a late 'playing' event from the previous chapter.
 context.window.JONAH_CHAPTERS[5]={image:'scene-6-warning.png'};

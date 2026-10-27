@@ -12,6 +12,10 @@ for(const [label,lines] of Object.entries(story))for(const line of lines){
  for(const target of targets)if(target.startsWith('jump '))assert.ok(story[target.slice(5)],`${label} links to missing label ${target}`);
 }
 for(const file of Object.values(scenes))assert.ok(existsSync(path.join(root,'assets/scenes',file)),`Missing artwork ${file}`);
+const rescueLine=story.Chapter5After.findIndex(line=>typeof line==='string'&&line.startsWith('n 神様は魚に命じ、'));
+assert.ok(rescueLine>0);
+assert.equal(story.Chapter5After[rescueLine-1],'show scene scene5rescue with fadeIn');
+assert.equal(scenes.scene5rescue,'scene-5-rescue.png');
 function walk(answer){
  let label='Start',step=0,iterations=0;const shown=[],visited=[];
  while(++iterations<1000){

@@ -15,6 +15,7 @@ const files = [
   'js/main.js',
   'js/scene-motion.js',
   'js/scene-transition.js',
+  'assets/scenes/scene-5-rescue.png',
   'assets/scenes/scene-6-warning.png',
   'assets/scenes/scene-7-repentance.png',
   'style/main.css',

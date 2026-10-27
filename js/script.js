@@ -3,7 +3,7 @@
 const ruby = (word, reading) => `<ruby>${word}<rt>${reading}</rt></ruby>`;
 const GOD = ruby('神様','かみさま');
 monogatari.assets('scenes', Object.fromEntries([1,2,3,4,5,6].map(i => [`scene${i}`, `scene-${i}.webp`])));
-monogatari.assets('scenes', {scene6:'scene-6-warning.png',scene6repentance:'scene-7-repentance.png'});
+monogatari.assets('scenes', {scene5rescue:'scene-5-rescue.png',scene6:'scene-6-warning.png',scene6repentance:'scene-7-repentance.png'});
 monogatari.characters({
  n:{name:'おはなし',color:'#315958'},
  q:{name:'いっしょに考えよう',color:'#9b5b31'},
@@ -103,6 +103,7 @@ script.Chapter5After = [
  'n ヨナは、魚のおなかの中から神様に祈りました。<br>苦しみの中で神様を思い、助けを求めました。',
  'n そして、救ってくださる神様に感謝し、<br>神様への約束を果たそうとしました。',
  'n ヨナは、魚のおなかの中に、三日三晩いました。<br>神様は、ヨナの祈りを聞いてくださいました。',
+ 'show scene scene5rescue with fadeIn',
  'n 神様は魚に命じ、ヨナを陸に吐き出させました。<br>ヨナの命を救ってくださったのです。',
  'n ヨナは、神様に頼ることの大切さを学びました。','jump Chapter6'
 ];
